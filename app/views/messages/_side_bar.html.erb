@@ -4,17 +4,23 @@
     <%= link_to current_user.name, edit_user_path(current_user) %>
   </div>
   <div class="create-room">
-    <a href="#">new chat</a>
+    <%= link_to 'new chat', new_room_path %>
   </div>
 </div>
 
-<div class="side-bottom">
+<%# <div class="side-bottom">
   <div class="side-bottom-room">
     <a href="#">testroom1</a>
   </div>
-    <div class="side-bottom-room">
+  <div class="side-bottom-room">
     <a href="#">testroom2</a>
   </div>
+</div> %>
 
+<div class="side-bottom">
+  <% current_user.rooms.each do |room| %>
+    <div class="side-bottom-room">
+      <a href="#"><%= room.name %></a>
+    </div>
+  <% end %>
 </div>
-
