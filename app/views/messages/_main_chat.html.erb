@@ -3,7 +3,7 @@
     <%= @room.name %>
   </div>
   <div class="destroy-room">
-    <a href="#">finish this chat</a>
+    <%= link_to 'finish this chat', room_path(@room), method: :delete %>
   </div>
 </div>
 
