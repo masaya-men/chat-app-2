@@ -1,14 +1,14 @@
 <div class="main-top">
   <div class="current-room">
-    current room
+    <%= @room.name %>
   </div>
   <div class="destroy-room">
-    <a href="#">finish this chat</a>
+    <%= link_to 'finish this chat', room_path(@room), method: :delete %>
   </div>
 </div>
 
 <div class="main-middle">
-  <div class="upper-content">
+  <%# <div class="upper-content">
     <div class="whose-message">
       Tom
     </div>
@@ -20,10 +20,11 @@
     <div class="message">
       i'm starving..
     </div>
-  </div>
+  </div> %>
+  <%= render partial: 'messages', collection: @messages %>
 </div>
 
-<div class="main-bottom">
+<%# <div class="main-bottom">
   <div class="form">
     <input class="type-message" placeholder="type a message">
     <label class="form-image">
@@ -32,4 +33,14 @@
     </label>
   </div>
   <input class="submit-message" type="submit" value="SEND">
-</div>
+</div> %>
+<%= form_with model: [@room, @message], class: 'main-bottom', local: true do |f| %>
+  <div class="form">
+    <%= f.text_field :content, class: 'type-message', placeholder: 'type a message' %>
+    <label class="form-image">
+      <span class="image-title">画像</span>
+      <%= f.file_field :image, class: 'hidden' %>
+    </label>
+  </div>
+  <%= f.submit 'SEND', class: 'submit-message' %>
+<% end %>
