@@ -8,7 +8,7 @@
 </div>
 
 <div class="main-middle">
-  <div class="upper-content">
+  <%# <div class="upper-content">
     <div class="whose-message">
       Tom
     </div>
@@ -20,7 +20,8 @@
     <div class="message">
       i'm starving..
     </div>
-  </div>
+  </div> %>
+  <%= render partial: 'messages', collection: @messages %>
 </div>
 
 <%# <div class="main-bottom">
